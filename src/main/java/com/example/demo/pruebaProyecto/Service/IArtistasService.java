@@ -9,5 +9,7 @@ public interface IArtistasService {
 
 	//metodo para consultar un soo artista
 
+	
 	ResponseEntity<Artistas> consultarUnArtista (int id_art);
+	List<Artistas> obtenerTodos();
 }

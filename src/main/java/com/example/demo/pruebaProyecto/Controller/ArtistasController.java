@@ -30,5 +30,11 @@ public class ArtistasController {
 	public ResponseEntity<Artistas> obtenerArtista(@PathVariable("id_art") int id_art){
 		return logNegoArtis.consultarUnArtista(id_art);
 	}
+	
+	@GetMapping("/artistas")
+	public List<Artistas> mostrarTodosArtistas(){
+		return logNegoArtis.obtenerTodos();
+	}
+	
 
 }

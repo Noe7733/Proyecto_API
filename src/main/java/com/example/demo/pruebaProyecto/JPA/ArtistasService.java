@@ -21,4 +21,13 @@ public class ArtistasService implements IArtistasService{
 		Artistas objA = ArtsRepo.findById(id_art).orElseThrow(() -> new ResourceNotFoudException("No existe el artista con el ID: "+ id_art));
 		return ResponseEntity.ok(objA);
 	}
+
+	@Override
+	public List<Artistas> obtenerTodos() {
+		// TODO Auto-generated method stub
+		List<Artistas> result = ArtsRepo.findAll();
+		if(result.isEmpty()) throw new ResourceNotFoudException("No hay artistas registrados, proceda a registrarlos");
+		
+		return ArtsRepo.findAll();
+	}
 }
