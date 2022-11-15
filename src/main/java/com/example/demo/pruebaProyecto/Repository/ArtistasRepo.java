@@ -9,6 +9,6 @@ import com.example.demo.pruebaProyecto.Entity.Artistas;
 public interface ArtistasRepo extends JpaRepository<Artistas, Integer> {
 	//selecciona un solo artista
 	
-	@Query ("select o from Artistas o where o.id_art like %?1")
-	Artistas findById(String id_art);
+	//@Query ("select o from Artistas o where o.id_art like %?1")
+	//Artistas findById(String id_art);
 }
