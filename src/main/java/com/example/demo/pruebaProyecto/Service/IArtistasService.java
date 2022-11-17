@@ -15,4 +15,6 @@ public interface IArtistasService {
 	ResponseEntity<?> eliminarArtista(int id_art);
 	//este es para insertar un artista
 	ResponseEntity<Map<String, String>> insertarArtista(Artistas insArtis );
+	//este es para actualizar un artista
+	ResponseEntity<Map<String, String>>actualizarArtista(Artistas obj, int id_art);
 }

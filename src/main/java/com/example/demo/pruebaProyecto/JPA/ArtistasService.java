@@ -15,14 +15,14 @@ import com.example.demo.pruebaProyecto.Entity.Artistas;
 public class ArtistasService implements IArtistasService{
 	@Autowired
 	private ArtistasRepo ArtsRepo;
-	
+	//consultar un artista
 	@Override
 	public ResponseEntity<Artistas> consultarUnArtista(int id_art) {
 		// TODO Auto-generated method stub
 		Artistas objA = ArtsRepo.findById(id_art).orElseThrow(() -> new ResourceNotFoudException("No existe el artista con el ID: "+ id_art));
 		return ResponseEntity.ok(objA);
 	}
-
+	//consultar todos los artistas
 	@Override
 	public List<Artistas> obtenerTodos() {
 		// TODO Auto-generated method stub
@@ -31,7 +31,7 @@ public class ArtistasService implements IArtistasService{
 		
 		return ArtsRepo.findAll();
 	}
-
+	//eliminar artista
 	@Override
 	public ResponseEntity<Map<String, String>> eliminarArtista(int id_art) {
 		
@@ -53,6 +53,7 @@ public class ArtistasService implements IArtistasService{
 				.orElse(new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND));
 	}
 	
+	//insertar artista
 	@Override
 	public ResponseEntity<Map<String, String>> insertarArtista(Artistas insArtis) {
 		// TODO Auto-generated method stub
@@ -62,6 +63,25 @@ public class ArtistasService implements IArtistasService{
 		ArtsRepo.save(insArtis);
 		return new ResponseEntity<>(okResponse,HttpStatus.CREATED);
 	}
+	
+	//actualizar un artista
+	@Override
+	public ResponseEntity<Map<String, String>> actualizarArtista(Artistas obj, int id_art) {
+		// TODO Auto-generated method stub
+		Map<String, String> okResponse = new HashMap<>();
+		okResponse.put("message", "Los datos del artista han sido actualizados coon exito");
+		okResponse.put("status", HttpStatus.OK.toString());
 		
+		Map<String, String> errorResponse = new HashMap<>();
+		errorResponse.put("message", "No existe un artista con el ID introducido");
+		errorResponse.put("status", HttpStatus.NOT_FOUND.toString());
+		
+		return ArtsRepo.findById(id_art).map(p -> {
+			obj.setIdArt(id_art);
+			ArtsRepo.save(obj);
+			return new ResponseEntity<>(okResponse, HttpStatus.OK);
+		})
+		.orElse(new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND));
+	}
 	
 }

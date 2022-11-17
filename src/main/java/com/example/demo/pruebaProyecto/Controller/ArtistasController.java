@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,6 +49,12 @@ public class ArtistasController {
 		logNegoArtis.insertarArtista(objArts);
 		return "El artista fue agregado correctamente";
 		
+	}
+	
+	@PutMapping("/artistas/{id_art}")
+	public String actualizarA(@RequestBody Artistas obj, @PathVariable("id_art") int id_art) {
+		logNegoArtis.actualizarArtista(obj, id_art);
+		return "Los datos del artista fueron actualizados con exito";
 	}
 	
 	
