@@ -1,4 +1,5 @@
 package com.example.demo.pruebaProyecto.JPA;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import com.example.demo.pruebaProyecto.Service.IArtistasService;
 import com.example.demo.pruebaProyecto.Repository.ArtistasRepo;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import com.example.demo.Resource.*;
+import com.example.demo.Resource.ResourceNotFoudException;
 import com.example.demo.pruebaProyecto.Entity.Artistas;
 @Service
 public class ArtistasService implements IArtistasService{
@@ -30,4 +31,37 @@ public class ArtistasService implements IArtistasService{
 		
 		return ArtsRepo.findAll();
 	}
+
+	@Override
+	public ResponseEntity<Map<String, String>> eliminarArtista(int id_art) {
+		
+		//esta parte es la que se hace si hubo error
+		Map<String, String> errorResponse = new HashMap<>();
+		//imprime el mansaje de que el artista no fue encontrado
+		errorResponse.put("message", "Este artista no existe en la base de datos");
+		//imprime el status de Http
+		errorResponse.put("status", HttpStatus.NOT_FOUND.toString());
+		//esta parte es la que se hace si no hubo error
+		Map<String, String> okResponse = new HashMap<>();
+		okResponse.put("message", "El artista fue eliminado con exito!");
+		okResponse.put("status", HttpStatus.OK.toString());
+		
+		return ArtsRepo.findById(id_art).map(p -> { 
+			ArtsRepo.deleteById(id_art);
+			return new ResponseEntity<>(okResponse, HttpStatus.OK);
+		})
+				.orElse(new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND));
+	}
+	
+	@Override
+	public ResponseEntity<Map<String, String>> insertarArtista(Artistas insArtis) {
+		// TODO Auto-generated method stub
+		Map<String, String> okResponse = new HashMap<>();
+		okResponse.put("message", "El artista fue agregado con exito a la base de datos");
+		okResponse.put("status", HttpStatus.CREATED.toString());
+		ArtsRepo.save(insArtis);
+		return new ResponseEntity<>(okResponse,HttpStatus.CREATED);
+	}
+		
+	
 }
