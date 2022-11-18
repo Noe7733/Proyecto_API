@@ -18,13 +18,17 @@ public class Playlist {
 	
 	
 	@Column(name = "nombre_play")
-	private int nombrePlay;
+	private String nombrePlay;
 
 	@Column(name = "fecha_crea")
-	private Date fechaCreada;
+	private String fechaCreada;
 	
-	@OneToMany(mappedBy = "plays")
-	private List<Usuario> usuario;
+
+	
+	//cardinalidad de la bd
+	@ManyToOne(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+	private Usuario usu;
 	
 	//cardinalidad de la base de datos, de las tablas cancion-playlist
 	@ManyToMany(mappedBy = "trackss")
@@ -34,7 +38,7 @@ public class Playlist {
 		super();
 	}
 
-	public Playlist(int nombrePlay, Date fechaCreada) {
+	public Playlist(String nombrePlay, String fechaCreada) {
 		super();
 		this.nombrePlay = nombrePlay;
 		this.fechaCreada = fechaCreada;
@@ -51,19 +55,19 @@ public class Playlist {
 	}
 
 
-	public int getNombrePlay() {
+	public String getNombrePlay() {
 		return nombrePlay;
 	}
 
-	public void setNombrePlay(int nombrePlay) {
+	public void setNombrePlay(String nombrePlay) {
 		this.nombrePlay = nombrePlay;
 	}
 
-	public Date getFechaCreada() {
+	public String getFechaCreada() {
 		return fechaCreada;
 	}
 
-	public void setFechaCreada(Date fechaCreada) {
+	public void setFechaCreada(String fechaCreada) {
 		this.fechaCreada = fechaCreada;
 	}
 	

@@ -10,7 +10,7 @@ import com.example.demo.pruebaProyecto.Repository.ArtistasRepo;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.example.demo.Resource.ResourceNotFoudException;
-import com.example.demo.pruebaProyecto.Entity.Artistas;
+
 @Service
 public class ArtistasService implements IArtistasService{
 	@Autowired

@@ -7,7 +7,7 @@ import com.example.demo.pruebaProyecto.Entity.Artistas;
 public interface IArtistasService {
 
 
-	//este es para obtener un artista por el iid
+	//este es para obtener un artista por el id
 	ResponseEntity<Artistas> consultarUnArtista (int id_art);
 	//este es para obtener todos los artistas
 	List<Artistas> obtenerTodos();

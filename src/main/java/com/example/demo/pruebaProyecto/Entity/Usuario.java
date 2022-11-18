@@ -1,5 +1,7 @@
 package com.example.demo.pruebaProyecto.Entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 //import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -40,10 +43,8 @@ public class Usuario {
 	@Column(name = "password")
 	private String passwordUsu;
 	
-	//cardinalidad de la bd
-	@ManyToOne(cascade = CascadeType.REMOVE)
-	@JoinColumn(name = "id_play", referencedColumnName = "id_play")
-	private Playlist plays;
+	@OneToMany(mappedBy = "usu")
+	private List<Playlist> plays;
 	
 	//constructores de la clase
 	
