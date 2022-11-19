@@ -27,7 +27,7 @@ public class Album {
 	private String nombreAlb;
 	
 	@Column(name = "anio_lanza")
-	private String anioLanza;
+	private int anioLanza;
 	
 	@Column(name = "tipo")
 	private String tipoAlb;
@@ -63,7 +63,7 @@ public class Album {
 	}
 
 
-	public Album(String nombreAlb, String anioLanza, String tipoAlb, int numCanciones, String productoraAlb,
+	public Album(String nombreAlb, int anioLanza, String tipoAlb, int numCanciones, String productoraAlb,
 			String urlImagenAlb, Artistas artis, List<Cancion> tracks) {
 		super();
 		this.nombreAlb = nombreAlb;
@@ -98,12 +98,12 @@ public class Album {
 	}
 
 
-	public String getAnioLanza() {
+	public int getAnioLanza() {
 		return anioLanza;
 	}
 
 
-	public void setAnioLanza(String anioLanza) {
+	public void setAnioLanza(int anioLanza) {
 		this.anioLanza = anioLanza;
 	}
 

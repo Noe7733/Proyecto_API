@@ -30,7 +30,7 @@ public class AlbumService implements IAlbumServi{
 	public List<Album> obtenerTodosA() {
 		// TODO Auto-generated method stub
 		List<Album> result = repoAlb.findAll();
-		if(result.isEmpty()) throw new ResourceNotFoudException("No hay artistas registrados, proceda a registrarlos");
+		if(result.isEmpty()) throw new ResourceNotFoudException("No hay album´s registrados, proceda a registrarlos");
 		return repoAlb.findAll();
 	}
 

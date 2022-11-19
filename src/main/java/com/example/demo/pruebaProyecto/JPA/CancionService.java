@@ -64,6 +64,7 @@ public class CancionService implements ICancionService{
 		Map<String, String> okResponse = new HashMap<>();
 		okResponse.put("message", "La cancion fue agregada con exito a la base de datos");
 		okResponse.put("status", HttpStatus.CREATED.toString());
+		repoCn.save(insCn);
 		return new ResponseEntity<>(okResponse,HttpStatus.CREATED);
 	}
 

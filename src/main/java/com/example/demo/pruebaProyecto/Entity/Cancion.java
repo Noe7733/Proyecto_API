@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+//import javax.persistence.OneToMany;
 //import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -28,18 +28,18 @@ public class Cancion {
 	private String nombreCn;
 	
 	@Column(name = "duracion")
-	private int duracionCn;
+	private float duracionCn;
 	
 	@Column(name = "genero_musical")
 	private String generoMusicalCn;
 	
 	@Column(name = "anio_lanzaCn")
 	private int anioLanzaCn;
-	
+	/*
 	@JoinColumn(name = "id_cn", nullable = false)
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Cancion> cn;
-	
+	*/
 	//cardinalidad de la base de datos, de las tablas cancion-album
 	@ManyToMany(mappedBy = "tracks")
 	private List<Album> alb;
@@ -59,14 +59,12 @@ public class Cancion {
 		super();
 	}
 
-	public Cancion(String nombreCn, int duracionCn, String generoMusicalCn, int anioLanzaCn, List<Cancion> cn,
-			List<Album> alb, List<Playlist> trackss) {
+	public Cancion(String nombreCn, float duracionCn, String generoMusicalCn, int anioLanzaCn, List<Album> alb, List<Playlist> trackss) {
 		super();
 		this.nombreCn = nombreCn;
 		this.duracionCn = duracionCn;
 		this.generoMusicalCn = generoMusicalCn;
 		this.anioLanzaCn = anioLanzaCn;
-		this.cn = cn;
 		this.alb = alb;
 		this.trackss = trackss;
 	}
@@ -89,11 +87,11 @@ public class Cancion {
 		this.nombreCn = nombreCn;
 	}
 
-	public int getDuracionCn() {
+	public float getDuracionCn() {
 		return duracionCn;
 	}
 
-	public void setDuracionCn(int duracionCn) {
+	public void setDuracionCn(float duracionCn) {
 		this.duracionCn = duracionCn;
 	}
 
@@ -111,14 +109,6 @@ public class Cancion {
 
 	public void setAnioLanzaCn(int anioLanzaCn) {
 		this.anioLanzaCn = anioLanzaCn;
-	}
-
-	public List<Cancion> getCn() {
-		return cn;
-	}
-
-	public void setCn(List<Cancion> cn) {
-		this.cn = cn;
 	}
 
 	public List<Album> getAlb() {
