@@ -1,16 +1,13 @@
 package com.example.demo.pruebaProyecto.Entity;
 
 import java.util.List;
-
-import javax.persistence.CascadeType;
+//import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-//import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+//import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -52,7 +49,8 @@ public class Usuario {
 		super();
 	}
 
-	public Usuario(String nombreUsu, String apellidoUsu, String fechaNac, String emailUsu, String paisUsu, String passwordUsu) {
+	public Usuario(String nombreUsu, String apellidoUsu, String fechaNac, String emailUsu, String paisUsu,
+			String passwordUsu, List<Playlist> plays) {
 		super();
 		this.nombreUsu = nombreUsu;
 		this.apellidoUsu = apellidoUsu;
@@ -60,8 +58,9 @@ public class Usuario {
 		this.emailUsu = emailUsu;
 		this.paisUsu = paisUsu;
 		this.passwordUsu = passwordUsu;
+		this.plays = plays;
 	}
-
+	
 	//getters y setters
 	public int getIdUsuario() {
 		return idUsuario;
@@ -117,5 +116,13 @@ public class Usuario {
 
 	public void setPasswordUsu(String passwordUsu) {
 		this.passwordUsu = passwordUsu;
+	}
+
+	public List<Playlist> getPlays() {
+		return plays;
+	}
+
+	public void setPlays(List<Playlist> plays) {
+		this.plays = plays;
 	}
 }

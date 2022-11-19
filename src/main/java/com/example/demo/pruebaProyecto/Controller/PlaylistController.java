@@ -42,4 +42,16 @@ public class PlaylistController {
 	public ResponseEntity<?> eliminarP(@PathVariable("id_play") int id_play){
 		return logNegoPlay.eliminarUnaPlay(id_play);
 	}
+	
+	@PostMapping("/playlist")
+	public String insertarPlay(@RequestBody Playlist objPlay) {
+		logNegoPlay.insertarPlay(objPlay);
+		return "La playlist fue agregada con exito";
+	}
+	
+	@PutMapping("/playlist/{id_play}")
+	public String actualizarPlay(@RequestBody Playlist obj, @PathVariable("id_play") int id_play) {
+		logNegoPlay.actualizarPlay(obj, id_play);
+		return "Los datos de la playlist fueron actualizados";
+	}
 }

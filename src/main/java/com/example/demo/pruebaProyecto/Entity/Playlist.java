@@ -38,10 +38,12 @@ public class Playlist {
 		super();
 	}
 
-	public Playlist(String nombrePlay, String fechaCreada) {
+	public Playlist(String nombrePlay, String fechaCreada, Usuario usu, List<Cancion> playss) {
 		super();
 		this.nombrePlay = nombrePlay;
 		this.fechaCreada = fechaCreada;
+		this.usu = usu;
+		this.playss = playss;
 	}
 
 	//getters y setters
@@ -53,7 +55,6 @@ public class Playlist {
 	public void setIdPlay(int idPlay) {
 		this.idPlay = idPlay;
 	}
-
 
 	public String getNombrePlay() {
 		return nombrePlay;
@@ -69,6 +70,22 @@ public class Playlist {
 
 	public void setFechaCreada(String fechaCreada) {
 		this.fechaCreada = fechaCreada;
+	}
+
+	public Usuario getUsu() {
+		return usu;
+	}
+
+	public void setUsu(Usuario usu) {
+		this.usu = usu;
+	}
+
+	public List<Cancion> getPlayss() {
+		return playss;
+	}
+
+	public void setPlayss(List<Cancion> playss) {
+		this.playss = playss;
 	}
 	
 }

@@ -31,7 +31,7 @@ public class AlbumController {
 		return logNegoAlb.consultarUnAlbum(id_alb);
 	}
 	
-	@GetMapping("/albums")
+	@GetMapping("/album")
 	public List<Album> mostrarTodosAlbums(){
 		return logNegoAlb.obtenerTodosA();
 	}
@@ -39,6 +39,18 @@ public class AlbumController {
 	@DeleteMapping("/album/{id_alb}")
 	public ResponseEntity<?> deleteAlb(@PathVariable("id_alb") int id_alb){
 		return logNegoAlb.eliminarAlbum(id_alb);
+	}
+	
+	@PostMapping("/album")
+	public String insertar(@RequestBody Album objAlb) {
+		logNegoAlb.insertarAlbum(objAlb);
+		return "El album fue agregado correctamente!";
+	}
+	
+	@PutMapping("/album/{id_alb}")
+	public String actualizarAlb(@RequestBody Album objAlbum, @PathVariable("id_alb") int id_alb) {
+		logNegoAlb.actualizarAlbum(objAlbum, id_alb);
+		return "Los datos del album fueron actualizados con exito";
 	}
 	
 }

@@ -58,4 +58,32 @@ public class PlaylistService implements IPlaylistService{
 		.orElse(new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND));
 	}
 
+	@Override
+	public ResponseEntity<Map<String, String>> insertarPlay(Playlist insPlay) {
+		// TODO Auto-generated method stub
+		Map<String, String> okResponse = new HashMap<>();
+		okResponse.put("message", "La playlist fue agregada con exito");
+		okResponse.put("status", HttpStatus.CREATED.toString());
+		repoPlay.save(insPlay);
+		return new ResponseEntity<>(okResponse,HttpStatus.CREATED);
+	}
+
+	@Override
+	public ResponseEntity<Map<String, String>> actualizarPlay(Playlist obj, int id_play) {
+		// TODO Auto-generated method stub
+		Map<String, String> okResponse = new HashMap<>();
+		okResponse.put("message", "Los datos de la playlist han sido actualizados coon exito");
+		okResponse.put("status", HttpStatus.OK.toString());
+		
+		Map<String, String> errorResponse = new HashMap<>();
+		errorResponse.put("message", "No existe una playlist con el ID introducido");
+		errorResponse.put("status", HttpStatus.NOT_FOUND.toString());
+		
+		return repoPlay.findById(id_play).map( p ->{
+			obj.setIdPlay(id_play);
+			return new ResponseEntity<>(okResponse, HttpStatus.OK);
+		})
+		.orElse(new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND));
+	}
+
 }

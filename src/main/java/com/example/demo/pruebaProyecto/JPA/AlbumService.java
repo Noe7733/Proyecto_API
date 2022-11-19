@@ -17,6 +17,7 @@ public class AlbumService implements IAlbumServi{
 	@Autowired
 	private AlbumRepo repoAlb;
 	
+	//consultar un album por medio del id
 	@Override
 	public ResponseEntity<Album> consultarUnAlbum(int id_alb) {
 		// TODO Auto-generated method stub
@@ -24,6 +25,7 @@ public class AlbumService implements IAlbumServi{
 		return ResponseEntity.ok(objAlb);
 	}
 
+	//consultar todos los album´s existentes
 	@Override
 	public List<Album> obtenerTodosA() {
 		// TODO Auto-generated method stub
@@ -32,6 +34,7 @@ public class AlbumService implements IAlbumServi{
 		return repoAlb.findAll();
 	}
 
+	//eliminar un album
 	@Override
 	public ResponseEntity<Map<String, String>> eliminarAlbum(int id_alb) {
 		// TODO Auto-generated method stub
@@ -50,6 +53,38 @@ public class AlbumService implements IAlbumServi{
 			return new ResponseEntity<>(okResponse, HttpStatus.OK);
 		})
 		.orElse(new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND));
+	}
+	
+	//insertar un album
+	@Override
+	public ResponseEntity<Map<String, String>> insertarAlbum(Album insAlb) {
+		// TODO Auto-generated method stub
+		Map<String, String> okResponse = new HashMap<>();
+		okResponse.put("message", "El album fue agregado con exito");
+		okResponse.put("status", HttpStatus.CREATED.toString());
+		repoAlb.save(insAlb);
+		return new ResponseEntity<>(okResponse, HttpStatus.CREATED);
+	}
+
+	//actualizar un album
+	@Override
+	public ResponseEntity<Map<String, String>> actualizarAlbum(Album obj, int id_alb) {
+		// TODO Auto-generated method stub
+		Map<String, String> okResponse = new HashMap<>();
+		okResponse.put("message", "Los datos del album han sido actualizados coon exito");
+		okResponse.put("status", HttpStatus.OK.toString());
+		
+		Map<String, String> errorResponse = new HashMap<>();
+		errorResponse.put("message", "No existe un album con el ID introducido");
+		errorResponse.put("status", HttpStatus.NOT_FOUND.toString());
+		
+		return repoAlb.findById(id_alb).map( p ->{
+			obj.setIdAlb(id_alb);
+			repoAlb.save(obj);
+			return new ResponseEntity<>(okResponse, HttpStatus.OK);
+		})
+		.orElse(new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND));
+		
 	}
 
 }

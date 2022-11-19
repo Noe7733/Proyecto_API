@@ -63,8 +63,8 @@ public class Album {
 	}
 
 
-
-	public Album(String nombreAlb, String anioLanza, String tipoAlb, int numCanciones, String productoraAlb, String urlImagenAlb, Artistas artis) {
+	public Album(String nombreAlb, String anioLanza, String tipoAlb, int numCanciones, String productoraAlb,
+			String urlImagenAlb, Artistas artis, List<Cancion> tracks) {
 		super();
 		this.nombreAlb = nombreAlb;
 		this.anioLanza = anioLanza;
@@ -73,68 +73,98 @@ public class Album {
 		this.productoraAlb = productoraAlb;
 		this.urlImagenAlb = urlImagenAlb;
 		this.artis = artis;
+		this.tracks = tracks;
 	}
 
-
-
 	//getters y setters de la clase
-
+	
 	public int getIdAlb() {
 		return idAlb;
 	}
+
 
 	public void setIdAlb(int idAlb) {
 		this.idAlb = idAlb;
 	}
 
 
-
 	public String getNombreAlb() {
 		return nombreAlb;
 	}
+
 
 	public void setNombreAlb(String nombreAlb) {
 		this.nombreAlb = nombreAlb;
 	}
 
+
 	public String getAnioLanza() {
 		return anioLanza;
 	}
+
 
 	public void setAnioLanza(String anioLanza) {
 		this.anioLanza = anioLanza;
 	}
 
+
 	public String getTipoAlb() {
 		return tipoAlb;
 	}
+
 
 	public void setTipoAlb(String tipoAlb) {
 		this.tipoAlb = tipoAlb;
 	}
 
+
 	public int getNumCanciones() {
 		return numCanciones;
 	}
+
 
 	public void setNumCanciones(int numCanciones) {
 		this.numCanciones = numCanciones;
 	}
 
+
 	public String getProductoraAlb() {
 		return productoraAlb;
 	}
+
 
 	public void setProductoraAlb(String productoraAlb) {
 		this.productoraAlb = productoraAlb;
 	}
 
+
 	public String getUrlImagenAlb() {
 		return urlImagenAlb;
 	}
 
+
 	public void setUrlImagenAlb(String urlImagenAlb) {
 		this.urlImagenAlb = urlImagenAlb;
 	}
-	
+
+
+	public Artistas getArtis() {
+		return artis;
+	}
+
+
+	public void setArtis(Artistas artis) {
+		this.artis = artis;
+	}
+
+
+	public List<Cancion> getTracks() {
+		return tracks;
+	}
+
+
+	public void setTracks(List<Cancion> tracks) {
+		this.tracks = tracks;
+	}
+
 }

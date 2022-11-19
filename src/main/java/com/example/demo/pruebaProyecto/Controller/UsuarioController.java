@@ -44,5 +44,16 @@ public class UsuarioController {
 		return logNegoUsu.eliminarusuario(id_usuario);
 	}
 	
+	@PostMapping("/usuario")
+	public String insertarUsuario(@RequestBody Usuario objUsu) {
+		logNegoUsu.insertarUsu(objUsu);
+		return "El usuario fue agregado con exito";
+	}
+	
+	@PutMapping("/usuario/{id_usuario}")
+	public String actualizarUsuario(@RequestBody Usuario obj, @PathVariable("id_usuario") int id_usuario) {
+		logNegoUsu.actualizarUsu(obj, id_usuario);
+		return "Los datos del usuario han sido actualiazados";
+	}
 	
 }

@@ -11,4 +11,8 @@ public interface IPlaylistService {
 	List<Playlist> obtenerTodasPlay();
 	//este es para eliminar una playlist
 	ResponseEntity<?> eliminarUnaPlay(int id_play);
+	//este es para insertar una playlist
+	ResponseEntity<Map<String, String>> insertarPlay(Playlist insPlay);
+	//este es para actualizar una playlist
+	ResponseEntity<Map<String, String>> actualizarPlay(Playlist obj, int id_play);
 }

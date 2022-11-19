@@ -10,4 +10,8 @@ public interface ICancionService {
 	List<Cancion> obtenerTodasCn();
 	//este es para eliminar un artista
 	ResponseEntity<?> eliminarUnaCn(int id_cancion);
+	//este es para insertar una cancion
+	ResponseEntity<Map<String, String>> insertarCancion(Cancion insCn);
+	//este es para actualizar un artista
+	ResponseEntity<Map<String, String>>actualizarCn(Cancion obj, int id_cancion);
 }

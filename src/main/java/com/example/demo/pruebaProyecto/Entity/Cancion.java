@@ -59,12 +59,16 @@ public class Cancion {
 		super();
 	}
 
-	public Cancion(String nombreCn, int duracionCn, String generoMusicalCn, int anioLanzaCn) {
+	public Cancion(String nombreCn, int duracionCn, String generoMusicalCn, int anioLanzaCn, List<Cancion> cn,
+			List<Album> alb, List<Playlist> trackss) {
 		super();
 		this.nombreCn = nombreCn;
 		this.duracionCn = duracionCn;
 		this.generoMusicalCn = generoMusicalCn;
 		this.anioLanzaCn = anioLanzaCn;
+		this.cn = cn;
+		this.alb = alb;
+		this.trackss = trackss;
 	}
 
 	//getters y setters
@@ -105,8 +109,32 @@ public class Cancion {
 		return anioLanzaCn;
 	}
 
-	public void setAnioLanzaCn( int anioLanzaCn) {
+	public void setAnioLanzaCn(int anioLanzaCn) {
 		this.anioLanzaCn = anioLanzaCn;
+	}
+
+	public List<Cancion> getCn() {
+		return cn;
+	}
+
+	public void setCn(List<Cancion> cn) {
+		this.cn = cn;
+	}
+
+	public List<Album> getAlb() {
+		return alb;
+	}
+
+	public void setAlb(List<Album> alb) {
+		this.alb = alb;
+	}
+
+	public List<Playlist> getTrackss() {
+		return trackss;
+	}
+
+	public void setTrackss(List<Playlist> trackss) {
+		this.trackss = trackss;
 	}
 	
 }

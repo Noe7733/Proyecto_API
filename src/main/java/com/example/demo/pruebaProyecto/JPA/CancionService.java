@@ -14,6 +14,7 @@ import com.example.demo.Resource.ResourceNotFoudException;
 @Service
 public class CancionService implements ICancionService{
 	
+	@Autowired
 	private CancionRepo repoCn;
 
 	//para buscar una cancion por medio del id
@@ -53,6 +54,34 @@ public class CancionService implements ICancionService{
 		return repoCn.findById(id_cancion).map( p -> {
 			repoCn.deleteById(id_cancion);
 			return new ResponseEntity<>(okResponse, HttpStatus.OK);
+		})
+		.orElse(new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND));
+	}
+
+	@Override
+	public ResponseEntity<Map<String, String>> insertarCancion(Cancion insCn) {
+		// TODO Auto-generated method stub
+		Map<String, String> okResponse = new HashMap<>();
+		okResponse.put("message", "La cancion fue agregada con exito a la base de datos");
+		okResponse.put("status", HttpStatus.CREATED.toString());
+		return new ResponseEntity<>(okResponse,HttpStatus.CREATED);
+	}
+
+	@Override
+	public ResponseEntity<Map<String, String>> actualizarCn(Cancion obj, int id_cancion) {
+		// TODO Auto-generated method stub
+		Map<String, String> okResponse = new HashMap<>();
+		okResponse.put("message", "Los datos de la cancion han sido actualizados coon exito");
+		okResponse.put("status", HttpStatus.OK.toString());
+		
+		Map<String, String> errorResponse = new HashMap<>();
+		errorResponse.put("message", "No existe la cancion con el ID introducido");
+		errorResponse.put("status", HttpStatus.NOT_FOUND.toString());
+		
+		return repoCn.findById(id_cancion).map( p -> {
+			obj.setIdCancion(id_cancion);
+			repoCn.save(obj);
+			return new ResponseEntity<>(okResponse,HttpStatus.OK);
 		})
 		.orElse(new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND));
 	}

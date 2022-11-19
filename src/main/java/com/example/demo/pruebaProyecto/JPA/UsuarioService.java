@@ -59,4 +59,32 @@ public class UsuarioService implements IUsuarioService{
 		.orElse(new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND));
 	}
 
+	@Override
+	public ResponseEntity<Map<String, String>> insertarUsu(Usuario insUsu) {
+		// TODO Auto-generated method stub
+		Map<String, String> okResponse = new HashMap<>();
+		okResponse.put("message", "El usuario fue agregado con exito");
+		okResponse.put("status", HttpStatus.CREATED.toString());
+		repoUsuario.save(insUsu);
+		return new ResponseEntity<>(okResponse, HttpStatus.CREATED);
+	}
+
+	@Override
+	public ResponseEntity<Map<String, String>> actualizarUsu(Usuario obj, int id_usuario) {
+		// TODO Auto-generated method stub
+		Map<String, String> okResponse = new HashMap<>();
+		okResponse.put("message", "Los datos del usuario han sido actualizados coon exito");
+		okResponse.put("status", HttpStatus.OK.toString());
+		
+		Map<String, String> errorResponse = new HashMap<>();
+		errorResponse.put("message", "No existe el usuario con el ID introducido");
+		errorResponse.put("status", HttpStatus.NOT_FOUND.toString());
+		
+		return repoUsuario.findById(id_usuario).map( p -> {
+			obj.setIdUsuario(id_usuario);
+			return new ResponseEntity<>(okResponse, HttpStatus.OK);
+		})
+		.orElse( new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND));
+	}
+
 }

@@ -40,13 +40,17 @@ public class Artistas {
 	@Column(name= "url_imagen")
 	private String urlImagenA;
 	
+	@OneToMany(mappedBy = "artis")
+	private List<Album> album;
+	
 	//constructores de la clase
 	
 	public Artistas() {
 		super();
 	}
 
-	public Artistas(String nombreArt, String generoMusical, int edadA, String popularidadA, String urlFabeookA, String urlImagenA) {
+	public Artistas(String nombreArt, String generoMusical, int edadA, String popularidadA, String urlFabeookA,
+			String urlImagenA, List<Album> album) {
 		super();
 		this.nombreArt = nombreArt;
 		this.generoMusical = generoMusical;
@@ -54,12 +58,9 @@ public class Artistas {
 		this.popularidadA = popularidadA;
 		this.urlFabeookA = urlFabeookA;
 		this.urlImagenA = urlImagenA;
+		this.album = album;
 	}
-	
-	@OneToMany(mappedBy = "artis")
-	private List<Album> album;
-	
-	//metotos getters y setters
+
 	public int getIdArt() {
 		return idArt;
 	}
@@ -115,5 +116,17 @@ public class Artistas {
 	public void setUrlImagenA(String urlImagenA) {
 		this.urlImagenA = urlImagenA;
 	}
+
+	public List<Album> getAlbum() {
+		return album;
+	}
+
+	public void setAlbum(List<Album> album) {
+		this.album = album;
+	}
+	
+	//metotos getters y setters
+
+	
 	
 }
