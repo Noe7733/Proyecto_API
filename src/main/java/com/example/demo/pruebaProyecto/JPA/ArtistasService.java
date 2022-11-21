@@ -83,5 +83,17 @@ public class ArtistasService implements IArtistasService{
 		})
 		.orElse(new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND));
 	}
+	//este es para buscar por la letra inicial del nombre de cada artista
+	@Override
+	public List<Artistas> buscarXLetra(String letra) {
+		// TODO Auto-generated method stub
+		List<Artistas> result = ArtsRepo.findByLetra(letra);
+		if(result.isEmpty())
+			throw new ResourceNotFoudException("No existe un artista con la letra: " + letra);
+		
+		return ArtsRepo.findByLetra(letra);
+	}
+
 	
+
 }

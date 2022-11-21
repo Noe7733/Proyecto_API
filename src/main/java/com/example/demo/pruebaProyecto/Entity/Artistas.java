@@ -24,7 +24,7 @@ public class Artistas {
 	
 	@Column(name = "nombre_art")
 	private String nombreArt;
-	
+
 	@Column(name = "genero_musical")
 	private String generoMusical;
 	
@@ -49,8 +49,8 @@ public class Artistas {
 		super();
 	}
 
-	public Artistas(String nombreArt, String generoMusical, int edadA, String popularidadA, String urlFabeookA,
-			String urlImagenA, List<Album> album) {
+
+	public Artistas(String nombreArt, String generoMusical, int edadA, String popularidadA, String urlFabeookA, String urlImagenA, List<Album> album) {
 		super();
 		this.nombreArt = nombreArt;
 		this.generoMusical = generoMusical;
@@ -61,72 +61,84 @@ public class Artistas {
 		this.album = album;
 	}
 
+	//metodos getters y setters
+
 	public int getIdArt() {
 		return idArt;
 	}
+
 
 	public void setIdArt(int idArt) {
 		this.idArt = idArt;
 	}
 
+
 	public String getNombreArt() {
 		return nombreArt;
 	}
+
 
 	public void setNombreArt(String nombreArt) {
 		this.nombreArt = nombreArt;
 	}
 
+
 	public String getGeneroMusical() {
 		return generoMusical;
 	}
+
 
 	public void setGeneroMusical(String generoMusical) {
 		this.generoMusical = generoMusical;
 	}
 
+
 	public int getEdadA() {
 		return edadA;
 	}
+
 
 	public void setEdadA(int edadA) {
 		this.edadA = edadA;
 	}
 
+
 	public String getPopularidadA() {
 		return popularidadA;
 	}
+
 
 	public void setPopularidadA(String popularidadA) {
 		this.popularidadA = popularidadA;
 	}
 
+
 	public String getUrlFabeookA() {
 		return urlFabeookA;
 	}
+
 
 	public void setUrlFabeookA(String urlFabeookA) {
 		this.urlFabeookA = urlFabeookA;
 	}
 
+
 	public String getUrlImagenA() {
 		return urlImagenA;
 	}
+
 
 	public void setUrlImagenA(String urlImagenA) {
 		this.urlImagenA = urlImagenA;
 	}
 
+
 	public List<Album> getAlbum() {
 		return album;
 	}
 
+
 	public void setAlbum(List<Album> album) {
 		this.album = album;
 	}
-	
-	//metotos getters y setters
-
-	
-	
 }

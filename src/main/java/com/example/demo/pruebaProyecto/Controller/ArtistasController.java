@@ -37,11 +37,15 @@ public class ArtistasController {
 		return logNegoArtis.obtenerTodos();
 	}
 	
+	@GetMapping("/artistas/letra/{letra}")
+	public List<Artistas> muestraPorLetra(@PathVariable("letra") String letra){
+		return logNegoArtis.buscarXLetra(letra);
+	}
+	
 	@DeleteMapping("/artistas/{id_art}")
 	public ResponseEntity<?> deleteArtista(@PathVariable("id_art") int id_art){
 		return logNegoArtis.eliminarArtista(id_art);
 	}
-	
 	
 	@PostMapping("/artistas")
 	public String insertar(@RequestBody Artistas objArts) {

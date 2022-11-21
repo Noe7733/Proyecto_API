@@ -21,7 +21,7 @@ public class AlbumService implements IAlbumServi{
 	@Override
 	public ResponseEntity<Album> consultarUnAlbum(int id_alb) {
 		// TODO Auto-generated method stub
-		Album objAlb = repoAlb.findById(id_alb).orElseThrow(() -> new ResourceNotFoudException("Noe existe el album con el ID introducido: "+id_alb));
+		Album objAlb = repoAlb.findById(id_alb).orElseThrow(() -> new ResourceNotFoudException("No existe el album con el ID introducido: "+id_alb));
 		return ResponseEntity.ok(objAlb);
 	}
 
