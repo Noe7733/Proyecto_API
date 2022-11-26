@@ -43,12 +43,12 @@ public class CancionService implements ICancionService{
 		//esta parte es la que se hace si hubo error
 		Map<String, String> errorResponse = new HashMap<>();
 		//imprime el mansaje de que el artista no fue encontrado
-		errorResponse.put("message", "Esta playlist no existe en la base de datos");
+		errorResponse.put("message", "Esta cancion no existe en la base de datos");
 		//imprime el status de Http
 		errorResponse.put("status", HttpStatus.NOT_FOUND.toString());
 		//esta parte es la que se hace si no hubo error
 		Map<String, String> okResponse = new HashMap<>();
-		okResponse.put("message", "La playlist fue eliminada con exito!");
+		okResponse.put("message", "La cancion fue eliminada con exito!");
 		okResponse.put("status", HttpStatus.OK.toString());
 		
 		return repoCn.findById(id_cancion).map( p -> {

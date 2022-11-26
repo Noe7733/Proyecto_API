@@ -43,7 +43,7 @@ public class SwaggerConfig implements WebMvcConfigurer{
 	}
 	private ApiInfo getApiInfo() {
 		return new ApiInfoBuilder().title("APIRestful-UNACHOtify")
-				.description("Esta api les ofrece recursos para implemnetaar la estrategia CRUD en las diferentes tablas con las que cuenta, ademas de dos diferentes consultas, una de la tabla Artista y otra de la tabla Album")
+				.description("Esta api les ofrece recursos para implementar la estrategia CRUD en las diferentes tablas con las que cuenta, ademas de dos diferentes consultas, una de la tabla Artista y otra de la tabla Album")
 				.version("1.0.0").build();
 	}
 }
